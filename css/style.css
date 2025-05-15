@@ -1,14 +1,14 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #78A8C8; /* Cor de fundo da página */
+  background-color: #78A8C8;
   margin: 0;
   padding: 0;
-  color: #595587; /* Cor das letras dos campos de texto */
+  color: #595587;
 }
 
-.header {
-  background-color: #6ca6f4;
-  color: white;
+.cabecalho {
+  background-color: #FFFFFF;
+  color: #595587;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -26,23 +26,23 @@ body {
   margin-right: 10px;
 }
 
-.nav {
+.navegacao {
   display: flex;
   gap: 20px;
 }
 
-.nav a {
-  color: white;
+.navegacao a {
+  color: #595587;
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.nav a:hover {
+.navegacao a:hover {
   color: #e6f2ff;
 }
 
-.form-container {
-  background-color: #6ca6f4;
+.container-formulario {
+  background-color: #78A8C8;
   padding: 20px;
   max-width: 800px;
   margin: 20px auto;
@@ -56,41 +56,41 @@ h1 {
   margin-bottom: 20px;
 }
 
-.form-group {
+.grupo-formulario {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.form-group label {
+.grupo-formulario label {
   color: white;
   margin-bottom: 5px;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"] {
+.grupo-formulario input[type="text"],
+.grupo-formulario input[type="email"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: border-color 0.3s;
-  color: #595587; /* Cor das letras dos campos de texto */
+  color: #595587;
 }
 
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus {
+.grupo-formulario input[type="text"]:focus,
+.grupo-formulario input[type="email"]:focus {
   border-color: #3a5ba0;
   outline: none;
 }
 
-.checkbox-group {
+.grupo-checkbox {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 10px;
   margin-top: 10px;
 }
 
-.checkbox-group label {
+.grupo-checkbox label {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -101,11 +101,11 @@ h1 {
   transition: background-color 0.3s;
 }
 
-.checkbox-group label:hover {
+.grupo-checkbox label:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.checkbox-group input[type="checkbox"] {
+.grupo-checkbox input[type="checkbox"] {
   margin-right: 5px;
 }
 
@@ -114,7 +114,7 @@ button {
   width: 100%;
   padding: 10px;
   background-color: white;
-  color: #6ca6f4;
+  color: #595587;
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -127,27 +127,27 @@ button:hover {
   color: white;
 }
 
-.footer {
-  background-color: #595587; /* Cor de fundo do rodapé */
-  color: #FFFFFF; /* Cor das letras do rodapé */
+.rodape {
+  background-color: #595587;
+  color: #FFFFFF;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.social-links {
+.links-sociais {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.social-links a {
-  color: #FFFFFF; /* Cor das letras do rodapé */
+.links-sociais a {
+  color: #FFFFFF;
   text-decoration: none;
 }
 
-.contact-info {
+.informacoes-contato {
   display: flex;
   align-items: center;
   gap: 10px;

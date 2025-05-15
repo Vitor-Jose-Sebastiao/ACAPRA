@@ -84,7 +84,7 @@ h1 {
 }
 
 .grupo-checkbox {
-  display: grid;
+  display: -ms-flexbox;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 10px;
   margin-top: 10px;
@@ -128,7 +128,7 @@ button:hover {
 }
 
 .rodape {
-  background-color: #595587; /
+  background-color: #595587;
   color: #FFFFFF;
   padding: 10px 20px;
   display: flex;
