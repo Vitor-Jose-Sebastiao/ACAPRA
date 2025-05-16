@@ -1,80 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ACAPRA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso do cliente</title>
+    <link rel="stylesheet" href="style.css">
+    <href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
+</head>
 
-  <body>
+<body>
     <header>
-      <nav>
-        <a class="logo" href="/">ACAPRA</a>
-        <div class="mobile-menu">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </div>
-        <ul class="nav-list">
-          <li><a href="#">Quero Adotar</a></li>
-          <li><a href="#">Voluntários</a></li>
-          <li><a href="#">Doações</a></li>
-          <li><a href="#">Loja</a></li>
-          <li><a href="#">Entrar</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="logo">
+      <img src="Fotos/Pata Acapra.png" alt="Logo ACAPRA">
+      <h1>ACAPRA</h1>
+    </div>
+    <nav>
+      <a href="#">Quero adotar</a>
+      <a href="#">Voluntários</a>
+      <a href="#">Doações</a>
+      <a href="#">Loja</a>
+      <a href="#">Entrar</a>
+    </nav>
+  </header>
 
+  <main>
+    <section class="left-panel">
+      <h2>Bem-vindo de volta!</h2>
+      <img src="Fotos/Pata Acapra.png" alt="Pata com coração">
+    </section>
 
-    <main>
-      <img src="img/pgInicial1_cachorroPatinha.png" width="100%" alt="Imagem">  
-          <div id="pgInicialContainer">
-            <div id="pgInicial">
-              <h4 class="livvic-thin" style="margin-bottom: 4vh;"><b>Conheça a NOSSA HISTÓRIA</b></h4>
-              <h5 class="livvic-thin" style="margin-bottom: 4vh;">"Olá! Agradecemos seu interesse em espalhar o amor dos nossos amigos peludos pela cidade. A ACAPRA foi criada para melhorar a qualidade de vida dos nossos pets, mas precisamos da sua ajuda com doações, adoções e participação em nossos projetos.</h5>
-              <h5 class="livvic-thin">Estamos em Brusque, SC, e estamos aqui para esclarecer suas dúvidas e ajudá-lo a encontrar um novo companheiro!"</h5>
-            </div>
-          <img id="pgInicialImg" src="img/pgInicial2_cachorroSozinho.png" style="width: 450px;" alt="Cachorro";>
+    <section class="right-panel">
+      <div class="login-box">
+        <h3>Não tem uma conta?</h3>
+        <button class="create-account">CRIE UMA</button>
+
+        <h3>Insira suas credenciais!</h3>
+        <form>
+          <input type="email" placeholder="E-mail" required>
+          <input type="password" placeholder="Senha" required>
+          <div class="actions">
+            <a href="#">Esqueceu sua senha?</a>
+            <button type="submit">Entrar</button>
           </div>
-          
-          <div id="voluntariosPgInicialContainer">
-            <div id="voluntariosPgInicialContent">
-              <img src="img/pgInicial3_cachorroGato.png" style="width: 405px; height: 270px" alt="Animais">
-              <div id="voluntariosPgInicialText">
-                <h4 class="pgInicialTxtContent livvic-regular">Seja um voluntário</h4>
-                <h5 class="pgInicialTxtContent livvic-thin">Precisamos da sua ajuda com nossos pets: contribuições, apoio em pedágios e doações de ração são sempre bem-vindos!</h5>
-                <a href="">
-                  <button class="pgInicialTxtContent livvic-medium" type="button">VOLUNTARIE-SE</button>
-                </a>
-              </div>
-              <img src="img/logoRoxa.png" alt="logo">
-            </div>
-          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-          <div id="pgInicialTrio">
-            <center>
-              <figure>
-                <img d="pgInicialTrioImg" src="img/pgInicial4_ecobag.png" alt="">
-                <figcaption id="legenda">Conheça nossa lojinha</figcaption>
-              </figure>
-              <figure>
-                <img id="pgInicialTrioImg" src="img/pgInicial5_adoteAmor.png" alt="Cachorro";>
-                <figcaption id="legenda">Adote amor</figcaption>
-              <figure>
-                <img id="pgInicialTrioImg" src="img/adocao-caes-01 1.png" alt="Cachorro";>
-                <figcaption id="legenda">Ganhe um amigo</figcaption>
-              </figure>
-              </center>
-          </div>
-
-    </main>
-    
-    <script src="mobile-navbar.js"></script>
-  </body>
-  <footer></footer>
+</body>
 </html>

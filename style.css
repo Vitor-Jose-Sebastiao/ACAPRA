@@ -1,210 +1,221 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-a {
-  color: #595587;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-a:hover {
-  opacity: 0.7;
-}
-
-#mainContainer {
-  background-color: #7a779f;
-  width: 100%;
-}
-
-#pgInicial{
-  background-color: #7a779f;
-  padding: 8vh;
-  color: #fff;
-  font-size: 4vh;
-}
-
-#pgInicialContainer {
-  background-color: #7a779f;
-}
-
-#pgInicialImg {
-  height: auto;
-}
-
-#pgInicialTrio{
-  background-color: #D9D9D9;
-  padding: 8vh;
-}
-
-#pgInicialTrioImg {
-  height: auto;
-  margin-left: 14vh;
-  display: flex;
-}
-
-figure{
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
-
-#voluntariosPgInicialContainer {
-  background-color: #fff;
-  padding: 6rem 4rem;
-  font-size: 4vh;
+body {
+  background-color: #f5f8fb;
   color: #595587;
 }
 
-#voluntariosPgInicialContent {
+header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-#voluntariosPgInicialText {
-  display: flex;
-  flex-direction: column;
-}
-
-.livvic-regular {
-  font-family: "Livvic", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.livvic-medium {
-  font-family: "Livvic", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.livvic-light {
-  font-family: "Livvic", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-#voluntariosPgInicialText > a > button {
-  background-color: #D9D9D9;
-  color: #595587;
-  border-radius: 9px;
-  border-color: transparent;
-  padding: 1.5% 5%;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 300;
-}
-
-.pgInicialTxtContent {
-  margin: 0.5rem 2rem;
-}
-
-.livvic-thin {
-  font-family: "Livvic", sans-serif;
-  font-weight: 100;
-  font-style: normal;
+  padding: 20px 60px;
+  background-color: white;
 }
 
 .logo {
-  font-size: 24px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
-  background: #fff;
-  height: 8vh;
+.logo img {
+  height: 40px;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #595587;
+  font-weight: bold;
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+
+nav a:last-child {
+  border: none;
 }
 
 main {
-  background: url("bg.jpg") no-repeat center center;
-  background-size: cover;
-  height: 92vh;
-  background-color: #7a779f;
-}
-
-.nav-list {
-  list-style: none;
   display: flex;
+  min-height: 80vh;
 }
 
-.nav-list li {
-  letter-spacing: 3px;
-  margin-left: 32px;
+.left-panel {
+  width: 50%;
+  background-color: #ffffff;
+  padding: 80px;
+  text-align: center;
+  color: #5e2ca5;
 }
 
-.mobile-menu {
-  display: none;
+.left-panel h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.left-panel img {
+  width: 150px;
+}
+
+.right-panel {
+  width: 50%;
+  background-color: #c9dceb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background: none;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+}
+
+.login-box h3 {
+  margin: 20px 0 10px;
+  color: #595587;
+}
+
+.create-account {
+  background-color: white;
+  border: none;
+  padding: 10px 20px;
+  color: #595587;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.actions a {
+  font-size: 0.9em;
+  color: #595587;
+  text-decoration: none;
+}
+
+.actions button {
+  background-color: white;
+  border: none;
+  padding: 10px 20px;
+  color: #595587;
+  font-weight: bold;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.mobile-menu div {
-  width: 32px;
-  height: 2px;
-  background: #595587;
-  margin: 8px;
-  transition: 0.3s;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
-@media (max-width: 999px) {
-  body {
-    overflow-x: hidden;
-  }
-  .nav-list {
-    position: absolute;
-    top: 8vh;
-    right: 0;
-    width: 50vw;
-    height: 92vh;
-    background: #fff;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in;
-  }
-  .nav-list li {
-    margin-left: 0;
-    opacity: 0;
-  }
-  .mobile-menu {
-    display: block;
-  }
+body {
+  background-color: #c9dfee;
 }
 
-.nav-list.active {
-  transform: translateX(0);
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #fff;
 }
 
-@keyframes navLinkFade {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+header img {
+  height: 40px;
 }
 
-.mobile-menu.active .line1 {
-  transform: rotate(-45deg) translate(-8px, 8px);
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #4c4c4c;
+  font-weight: 500;
 }
 
-.mobile-menu.active .line2 {
-  opacity: 0;
+main {
+  display: flex;
+  height: calc(100vh - 80px);
 }
 
-.mobile-menu.active .line3 {
-  transform: rotate(45deg) translate(-5px, -7px);
+.left {
+  background-color: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-footer{
-  background-color: #7a779f;
+.left h2 {
+  color: #4c4c94;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
+
+.left img {
+  width: 120px;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #c9dfee;
+}
+
+.right h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-options a {
+  background-color: #fff;
+  color: #4c4c94;
+  padding: 10px 30px;
+  text-align: center;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.2s;
+}
+
+.login-options a:hover {
+  background-color: #e5e5f7;
+}
+
+
