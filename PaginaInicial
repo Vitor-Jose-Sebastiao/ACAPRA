@@ -1,0 +1,166 @@
+package com.acapra;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import jakarta.persistence.*;
+import java.util.List;
+
+@SpringBootApplication
+public class AcapraApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AcapraApplication.class, args);
+    }
+}
+
+@Entity
+class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String email;
+    private String senha;
+    private boolean voluntario;
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
+    public boolean isVoluntario() { return voluntario; }
+    public void setVoluntario(boolean voluntario) { this.voluntario = voluntario; }
+}
+
+@Entity
+class Animal {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String especie;
+    private String idade;
+    private boolean adotado;
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getEspecie() { return especie; }
+    public void setEspecie(String especie) { this.especie = especie; }
+    public String getIdade() { return idade; }
+    public void setIdade(String idade) { this.idade = idade; }
+    public boolean isAdotado() { return adotado; }
+    public void setAdotado(boolean adotado) { this.adotado = adotado; }
+}
+
+@Entity
+class Doacao {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String doador;
+    private Double valor;
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getDoador() { return doador; }
+    public void setDoador(String doador) { this.doador = doador; }
+    public Double getValor() { return valor; }
+    public void setValor(Double valor) { this.valor = valor; }
+}
+
+@Entity
+class Evento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String titulo;
+    private String descricao;
+    private String data;
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+    public String getData() { return data; }
+    public void setData(String data) { this.data = data; }
+}
+
+
+@Repository
+interface UsuarioRepository extends JpaRepository<Usuario, Long> {}
+@Repository
+interface AnimalRepository extends JpaRepository<Animal, Long> {}
+@Repository
+interface DoacaoRepository extends JpaRepository<Doacao, Long> {}
+@Repository
+interface EventoRepository extends JpaRepository<Evento, Long> {}
+
+
+@RestController
+@RequestMapping("/usuarios")
+class UsuarioController {
+    private final UsuarioRepository repo;
+    UsuarioController(UsuarioRepository repo) { this.repo = repo; }
+
+    @GetMapping
+    public List<Usuario> listar() { return repo.findAll(); }
+
+    @PostMapping
+    public Usuario cadastrar(@RequestBody Usuario usuario) {
+        return repo.save(usuario);
+    }
+}
+
+@RestController
+@RequestMapping("/animais")
+class AnimalController {
+    private final AnimalRepository repo;
+    AnimalController(AnimalRepository repo) { this.repo = repo; }
+
+    @GetMapping
+    public List<Animal> listar() { return repo.findAll(); }
+
+    @PostMapping
+    public Animal cadastrar(@RequestBody Animal animal) {
+        return repo.save(animal);
+    }
+}
+
+@RestController
+@RequestMapping("/doacoes")
+class DoacaoController {
+    private final DoacaoRepository repo;
+    DoacaoController(DoacaoRepository repo) { this.repo = repo; }
+
+    @GetMapping
+    public List<Doacao> listar() { return repo.findAll(); }
+
+    @PostMapping
+    public Doacao doar(@RequestBody Doacao doacao) {
+        return repo.save(doacao);
+    }
+}
+
+@RestController
+@RequestMapping("/eventos")
+class EventoController {
+    private final EventoRepository repo;
+    EventoController(EventoRepository repo) { this.repo = repo; }
+
+    @GetMapping
+    public List<Evento> listar() { return repo.findAll(); }
+
+    @PostMapping
+    public Evento cadastrar(@RequestBody Evento evento) {
+        return repo.save(evento);
+    }
+}

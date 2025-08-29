@@ -1,0 +1,77 @@
+package com.acapra;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import jakarta.persistence.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@SpringBootApplication
+public class AcapraApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AcapraApplication.class, args);
+    }
+}
+
+@Entity
+class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String email;
+    private String senha;
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
+}
+
+@Repository
+interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
+}
+
+@RestController
+@RequestMapping("/api/auth")
+class AuthController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody User user) {
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            return ResponseEntity.badRequest().body("E-mail já cadastrado!");
+        }
+        user.setSenha(passwordEncoder.encode(user.getSenha())); // Criptografa senha
+        userRepository.save(user);
+        return ResponseEntity.ok("Usuário registrado com sucesso!");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User loginRequest) {
+        Optional<User> userOpt = userRepository.findByEmail(loginRequest.getEmail());
+
+        if (userOpt.isPresent() && passwordEncoder.matches(loginRequest.getSenha(), userOpt.get().getSenha())) {
+            return ResponseEntity.ok("Login realizado com sucesso!");
+        } else {
+            return ResponseEntity.status(401).body("Credenciais inválidas!");
+        }
+    }
+}

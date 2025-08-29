@@ -1,0 +1,154 @@
+package com.acapra;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import jakarta.persistence.*;
+import java.util.List;
+
+@SpringBootApplication
+public class AcapraApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AcapraApplication.class, args);
+    }
+}
+
+@Entity
+class FormularioAdocao {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    // Dados pessoais
+    private String nomeCompleto;
+    private String telefone;
+    private String cpf;
+    private String dataNascimento;
+    private String possuiPetAtual;
+
+    // Endereço
+    private String rua;
+    private String bairro;
+    private String cidade;
+    private String estado;
+    private String numero;
+    private String cep;
+
+    // Informações adicionais
+    private String trabalhaAtualmente;
+    private String moraEm;
+    private String casaEhAlugada;
+    private String quantasPessoasMoram;
+    private String criancasNaCasa;
+    private String quemCuidaraPet;
+    private String residenciaTemTeladoProtecao;
+    private String possuiOutrosAnimais;
+    private String quaisAnimais;
+    private String gastosMensais;
+    private String estaCienteResponsabilidades;
+    private String concordaVisita;
+
+    // Justificativa
+    @Column(length = 2000)
+    private String justificativa;
+
+    // Getters e Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getNomeCompleto() { return nomeCompleto; }
+    public void setNomeCompleto(String nomeCompleto) { this.nomeCompleto = nomeCompleto; }
+
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
+
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+
+    public String getDataNascimento() { return dataNascimento; }
+    public void setDataNascimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
+
+    public String getPossuiPetAtual() { return possuiPetAtual; }
+    public void setPossuiPetAtual(String possuiPetAtual) { this.possuiPetAtual = possuiPetAtual; }
+
+    public String getRua() { return rua; }
+    public void setRua(String rua) { this.rua = rua; }
+
+    public String getBairro() { return bairro; }
+    public void setBairro(String bairro) { this.bairro = bairro; }
+
+    public String getCidade() { return cidade; }
+    public void setCidade(String cidade) { this.cidade = cidade; }
+
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
+
+    public String getNumero() { return numero; }
+    public void setNumero(String numero) { this.numero = numero; }
+
+    public String getCep() { return cep; }
+    public void setCep(String cep) { this.cep = cep; }
+
+    public String getTrabalhaAtualmente() { return trabalhaAtualmente; }
+    public void setTrabalhaAtualmente(String trabalhaAtualmente) { this.trabalhaAtualmente = trabalhaAtualmente; }
+
+    public String getMoraEm() { return moraEm; }
+    public void setMoraEm(String moraEm) { this.moraEm = moraEm; }
+
+    public String getCasaEhAlugada() { return casaEhAlugada; }
+    public void setCasaEhAlugada(String casaEhAlugada) { this.casaEhAlugada = casaEhAlugada; }
+
+    public String getQuantasPessoasMoram() { return quantasPessoasMoram; }
+    public void setQuantasPessoasMoram(String quantasPessoasMoram) { this.quantasPessoasMoram = quantasPessoasMoram; }
+
+    public String getCriancasNaCasa() { return criancasNaCasa; }
+    public void setCriancasNaCasa(String criancasNaCasa) { this.criancasNaCasa = criancasNaCasa; }
+
+    public String getQuemCuidaraPet() { return quemCuidaraPet; }
+    public void setQuemCuidaraPet(String quemCuidaraPet) { this.quemCuidaraPet = quemCuidaraPet; }
+
+    public String getResidenciaTemTeladoProtecao() { return residenciaTemTeladoProtecao; }
+    public void setResidenciaTemTeladoProtecao(String residenciaTemTeladoProtecao) { this.residenciaTemTeladoProtecao = residenciaTemTeladoProtecao; }
+
+    public String getPossuiOutrosAnimais() { return possuiOutrosAnimais; }
+    public void setPossuiOutrosAnimais(String possuiOutrosAnimais) { this.possuiOutrosAnimais = possuiOutrosAnimais; }
+
+    public String getQuaisAnimais() { return quaisAnimais; }
+    public void setQuaisAnimais(String quaisAnimais) { this.quaisAnimais = quaisAnimais; }
+
+    public String getGastosMensais() { return gastosMensais; }
+    public void setGastosMensais(String gastosMensais) { this.gastosMensais = gastosMensais; }
+
+    public String getEstaCienteResponsabilidades() { return estaCienteResponsabilidades; }
+    public void setEstaCienteResponsabilidades(String estaCienteResponsabilidades) { this.estaCienteResponsabilidades = estaCienteResponsabilidades; }
+
+    public String getConcordaVisita() { return concordaVisita; }
+    public void setConcordaVisita(String concordaVisita) { this.concordaVisita = concordaVisita; }
+
+    public String getJustificativa() { return justificativa; }
+    public void setJustificativa(String justificativa) { this.justificativa = justificativa; }
+}
+
+@Repository
+interface FormularioAdocaoRepository extends JpaRepository<FormularioAdocao, Long> {}
+
+@RestController
+@RequestMapping("/adocao")
+class FormularioAdocaoController {
+    private final FormularioAdocaoRepository repo;
+    FormularioAdocaoController(FormularioAdocaoRepository repo) { this.repo = repo; }
+
+    // Listar todos formulários
+    @GetMapping
+    public List<FormularioAdocao> listar() {
+        return repo.findAll();
+    }
+
+    // Salvar novo formulário
+    @PostMapping
+    public FormularioAdocao cadastrar(@RequestBody FormularioAdocao form) {
+        return repo.save(form);
+    }
+}

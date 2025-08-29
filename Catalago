@@ -1,0 +1,71 @@
+package com.acapra;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import jakarta.persistence.*;
+import java.util.List;
+
+@SpringBootApplication
+public class AcapraApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AcapraApplication.class, args);
+    }
+}
+
+@Entity
+class Animal {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nome;
+    private String sexo;       // macho ou fêmea
+    private String porte;      // pequeno, médio, grande
+    private String idade;      // ex: 2 anos
+    private String especie;    // cão, gato etc.
+    private String imagemUrl;  // link da foto
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getSexo() { return sexo; }
+    public void setSexo(String sexo) { this.sexo = sexo; }
+
+    public String getPorte() { return porte; }
+    public void setPorte(String porte) { this.porte = porte; }
+
+    public String getIdade() { return idade; }
+    public void setIdade(String idade) { this.idade = idade; }
+
+    public String getEspecie() { return especie; }
+    public void setEspecie(String especie) { this.especie = especie; }
+
+    public String getImagemUrl() { return imagemUrl; }
+    public void setImagemUrl(String imagemUrl) { this.imagemUrl = imagemUrl; }
+}
+
+@Repository
+interface AnimalRepository extends JpaRepository<Animal, Long> {}
+
+@RestController
+@RequestMapping("/animais")
+class AnimalController {
+    private final AnimalRepository repo;
+    AnimalController(AnimalRepository repo) { this.repo = repo; }
+
+    @GetMapping
+    public List<Animal> listar() {
+        return repo.findAll();
+    }
+
+    @PostMapping
+    public Animal cadastrar(@RequestBody Animal animal) {
+        return repo.save(animal);
+    }
+}
